@@ -153,7 +153,7 @@ class wbankwallet(db.Model,UserMixin):
     role = db.Column(db.String(60),nullable=False,default='NonVerify')
     setamount = db.Column(db.Integer,nullable=False,default=20000)
     nowamount = db.Column(db.Integer,nullable=False,default=0)
-    def __init__(self,username,balance,password,verify,sub,accnumber,openpay,role,setAmount,nowAmount):
+    def __init__(self,username,balance,password,verify,sub,accnumber,openpay,role,setamount,nowamount):
       self.username = username
       self.balance = balance
       self.password = password
