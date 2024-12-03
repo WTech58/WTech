@@ -401,6 +401,9 @@
                     </label> 
                     <label>設置交易限額 (WTC$):</label>
                     <input type="number" id="setAmountOfTrade" value="{{ setAmount }}">
+                    <br>
+                    <label>清除限額 : </label>
+                    <button class="button" onclick="removeAmount()">Clear</button>
                 </div>
             </div>
         </div>
@@ -506,6 +509,11 @@
         }
         function wbankLogout() {
            window.location.href="/wbank/logout";
+        }
+        function removeAmount() {
+           fetch ("/wbank/clearAmount",{headers:{"user":"{{user}}"}})
+             .then (res=>res.text())
+             .then (msg=>alert(msg));
         }
         const transfer = () => {
             window.location.href = "/wbank/transfer";
