@@ -341,13 +341,12 @@ class walletView(ModelView):
     
   edit_modal=True
   form = IDBrandForm
-  @auth.login_required
   def is_accessible(self):
-    return True  # 只要通過認證，就可以訪問
-
-  @auth.login_required
-  def inaccessible_callback(self, name, **kwargs):
-    return unauthorized()  # 使用自定義的未授權響應
+    return (
+            current_user.is_active
+            and current_user.is_authenticated
+            #and current_user.role=="admin"
+    )
 
 class kycView(ModelView):
   column_list = ('username','fname','id_number','address','career')
